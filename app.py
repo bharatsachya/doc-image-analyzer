@@ -11,9 +11,11 @@ from dotenv import load_dotenv
 from numpy.linalg import norm
 from PIL import Image
 import pytesseract
-import spacy 
+from rake_nltk import Rake
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
 
-nlp = spacy.load("en_core_web_sm")
 #  loaded local env
 load_dotenv()
 
@@ -35,10 +37,17 @@ def extractTextFromImage(image: Image.Image):
 
 def highlight_key_points(summary):
     # Use spaCy NER to find important entities (optional)
-    doc = nlp(summary)
+    rake = Rake()
+    rake.extract_keywords_from_text(summary)
+    
+    # Get the ranked phrases
+    ranked_phrases = rake.get_ranked_phrases()
+    
+    # Highlight the important keywords/phrases
     highlighted_summary = summary
-    for ent in doc.ents:
-        highlighted_summary = highlighted_summary.replace(ent.text, f"**{ent.text}**")  # Bold entities
+    for phrase in ranked_phrases[:5]:  # Select top 5 phrases
+        highlighted_summary = highlighted_summary.replace(phrase, f"**{phrase}**")
+    
     return highlighted_summary
 
 
