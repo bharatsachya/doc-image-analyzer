@@ -65,3 +65,4 @@ tzdata==2024.1
 urllib3==2.2.1
 pytesseract==0.3.13
 transformers
+rake_nltk
