@@ -18,8 +18,6 @@ import shutil
 nltk.download('stopwords')
 nltk.download('punkt')
 
-
-
 pytesseract.pytesseract.tesseract_cmd = None
 
 # search for tesseract binary in path
@@ -30,6 +28,7 @@ def find_tesseract_binary() -> str:
 # set tesseract binary path
 pytesseract.pytesseract.tesseract_cmd = find_tesseract_binary()
 print(find_tesseract_binary())
+
 if not pytesseract.pytesseract.tesseract_cmd:
     st.error("Tesseract binary not found in PATH. Please install Tesseract.")
 
