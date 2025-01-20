@@ -7,3 +7,4 @@ API_KEY = os.getenv("API_KEY")
 BASE_PROMPT = os.getenv("BASE")
 TEMPERATURE = 0.5
 MAX_TOKENS = 200
+base = BASE_PROMPT
