@@ -63,7 +63,6 @@ types-requests==2.31.0.20240406
 typing_extensions==4.11.0
 tzdata==2024.1
 urllib3==2.2.1
-pytesseract==0.3.13
+pytesseract.pytesseract.tesseract_cmd == "C:/Program Files (x86)/Tesseract-OCR/tesseract.exe"
 transformers
 rake_nltk
-tesseract-ocr
