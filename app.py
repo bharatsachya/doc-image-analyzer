@@ -167,7 +167,6 @@ if df is not None and prompt != "":
 
     
 if result is not None:
-    st.write(result.generations[0].text)
     highlighted_summary = highlight_key_points(result.generations[0].text)
     st.write(highlighted_summary)
     
