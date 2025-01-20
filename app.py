@@ -16,7 +16,8 @@ import nltk
 import shutil
 
 nltk.download('stopwords')
-nltk.download('punkt')
+nltk.download('punkt', quiet=True)
+nltk.download('punkt_tab',quiet=True)
 
 pytesseract.pytesseract.tesseract_cmd = None
 
