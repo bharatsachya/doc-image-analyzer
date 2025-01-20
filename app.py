@@ -27,6 +27,7 @@ MAX_TOKENS = 200
 text=""
 result=None
 
+pytesseract.pytesseract.tesseract_cmd == "C:/Program Files (x86)/Tesseract-OCR/tesseract.exe"
 co=cohere.Client(api)
 
 def extractTextFromImage(image: Image.Image):
