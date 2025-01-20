@@ -13,8 +13,24 @@ from PIL import Image
 import pytesseract
 from rake_nltk import Rake
 import nltk
+import shutil
+
 nltk.download('stopwords')
 nltk.download('punkt')
+
+
+
+pytesseract.pytesseract.tesseract_cmd = None
+
+# search for tesseract binary in path
+@st.cache_resource
+def find_tesseract_binary() -> str:
+    return shutil.which("tesseract")
+
+# set tesseract binary path
+pytesseract.pytesseract.tesseract_cmd = find_tesseract_binary()
+if not pytesseract.pytesseract.tesseract_cmd:
+    st.error("Tesseract binary not found in PATH. Please install Tesseract.")
 
 #  loaded local env
 load_dotenv()
@@ -27,7 +43,6 @@ MAX_TOKENS = 200
 text=""
 result=None
 
-pytesseract.pytesseract.tesseract_cmd == "C:/Program Files (x86)/Tesseract-OCR/tesseract.exe"
 co=cohere.Client(api)
 
 def extractTextFromImage(image: Image.Image):
