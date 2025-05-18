@@ -10,7 +10,7 @@ co = cohere.Client(API_KEY)
 def embed(Texts: Sequence[str]):
     try:
         res=co.embed(texts=Texts)
-        return res
+        return res.embeddings
     except Exception as e:
         raise CustomException(e,sys)
 
